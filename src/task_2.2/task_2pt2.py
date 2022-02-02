@@ -40,7 +40,7 @@ def main():
             nonrt_arrived()
         elif event == 2:
             service_completed()
-
+    print(df)
     export_to_excel()
 
 
@@ -101,7 +101,7 @@ def record_global_vars():
     global mc, rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time, iat_rt, iat_nonrt, serviceTime_rt, serviceTime_nonrt, df
     series_obj = pd.Series( [mc,rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time], index=df.columns )
     df = df.append(series_obj, ignore_index=True)
-    print(df)
+    #print(df.iloc[-1].to_frame().T)
 
 def export_to_excel():
     global mc, rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time, iat_rt, iat_nonrt, serviceTime_rt, serviceTime_nonrt, df
@@ -120,7 +120,6 @@ def randomized_param():
 def next_event():
     # {event(int):value}
     clock_dict= {0:rtcl, 1:nonRTCL, 2:scl}
-    print(clock_dict)
     sorted_clock = sorted(clock_dict.items(), key=lambda kv: kv[1])
     sorted_clock_dict = collections.OrderedDict(sorted_clock)
     if s == 0:

@@ -35,7 +35,7 @@ def main():
             nonrt_arrived()
         if mc == scl:
             service_completed()
-
+    print(df)
     export_to_excel()
 
 
@@ -98,7 +98,7 @@ def record_global_vars():
     global mc, rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time, iat_rt, iat_nonrt, serviceTime_rt, serviceTime_nonrt, df
     series_obj = pd.Series( [mc,rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time], index=df.columns )
     df = df.append(series_obj, ignore_index=True)
-    print(df)
+    #print(df)
 
 def export_to_excel():
     global mc, rtcl, nonRTCL, n_rt, n_nonrt, scl, s, pre_empted_service_time, iat_rt, iat_nonrt, serviceTime_rt, serviceTime_nonrt, df
